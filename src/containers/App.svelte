@@ -1,6 +1,7 @@
 <script>
   import Main from '../components/Main.svelte';
   import Logo from '../components/Logo.svelte';
+  import Flag from '../components/Flag.svelte';
 </script>
 
 <style>
@@ -14,4 +15,5 @@
 
 <Main>
   <Logo />
+  <Flag />
 </Main>
