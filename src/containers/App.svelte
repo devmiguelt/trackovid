@@ -3,6 +3,7 @@
   import Logo from '../components/Logo.svelte';
   import Flag from '../components/Flag.svelte';
   import Counter from '../components/Counters.svelte';
+  import ButtonPlus from '../components/ButtonPlus.svelte';
 </script>
 
 <style>
@@ -17,4 +18,5 @@
   <Logo />
   <Flag />
   <Counter />
+  <ButtonPlus />
 </Main>

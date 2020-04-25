@@ -3,6 +3,18 @@
   export const count_infected = 0;
   export const count_save = 0;
   export const count_dead = 0;
+
+  function updateCount(_cant = 0, option) {
+    if (option === "infected") {
+      count_infected = _cant;
+    }
+    if (option === "save") {
+      count_save = _cant;
+    }
+    if (option === "dead") {
+      count_dead = _cant;
+    }
+  }
 </script>
 
 <style>
@@ -53,7 +65,7 @@
 
 <div class="Counter">
   <div class="Counter-title">
-    <h2 class="Counter-title-h2">{country} en Números</h2>
+    <h2 class="Counter-title-h2">{country} en Números...</h2>
   </div>
 
   <div class="Counter-items">
