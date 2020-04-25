@@ -4,11 +4,11 @@
     justify-content: center;
   }
   #logo-img {
-    width: 8%;
-    background-color: white;
+    width: 20%;
+    /* background-color: white; */
   }
 </style>
 
-<div class="logo">
+<div class="logo" style="background:red;">
   <img src="../../public/img/logo-virus.svg" alt="Trackovid Logo" id="logo-img">
 </div>
