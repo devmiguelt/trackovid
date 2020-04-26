@@ -1,8 +1,14 @@
 <script>
+  import {
+    count_infected,
+    count_saved,
+    count_dead
+  } from "../store/store.js";
+
   export const country = 'Chile';
-  export const count_infected = 0;
-  export const count_save = 0;
-  export const count_dead = 0;
+  // export const count_infected = 0;
+  // export const count_saved = 0;
+  // export const count_dead = 0;
 
   function updateCount(_cant = 0, option) {
     if (option === "infected") {
@@ -70,15 +76,15 @@
 
   <div class="Counter-items">
     <div class="Counter-item">
-      <h2 class="Counter-item-numbers">{count_infected}</h2>
+      <h2 class="Counter-item-numbers">{$count_infected}</h2>
       <span class="Counter-item-label">Contagiados</span>
     </div>
     <div class="Counter-item">
-      <h2 class="Counter-item-numbers">{count_dead}</h2>
+      <h2 class="Counter-item-numbers">{$count_dead}</h2>
       <span class="Counter-item-label">Fallecidos</span>
     </div>
     <div class="Counter-item">
-      <h2 class="Counter-item-numbers">{count_save}</h2>
+      <h2 class="Counter-item-numbers">{$count_saved}</h2>
       <span class="Counter-item-label">Recuperados</span>
     </div>
   </div>
