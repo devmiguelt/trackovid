@@ -25,17 +25,43 @@
       }
     });
     data = await _data.json();
+
+    function evaluateIncrement(value) {
+      if (value >= 1000000) {
+        return 100000
+      }
+      if (value >= 100000) {
+        return 10000;
+      }
+      else if (value >= 10000) {
+        return 1000;
+      }
+      else if (value >= 1000) {
+        return 100;
+      }
+      else if (value >= 500) {
+        return 200;
+      }
+      else if (value >= 250) {
+        return 100;
+      }
+      else {
+        return 1;
+      }
+    }
+
     let infected_intval = setInterval(function() {
       let _count = data.response[0].cases.total;
-      ($count_infected >= _count) ? clearInterval(infected_intval) : count_infected.update(n => n + 1);
+
+      ($count_infected >= _count) ? clearInterval(infected_intval) : count_infected.update(n => n + evaluateIncrement(_count - $count_infected));
     }, 2);
     let death_intval = setInterval(function() {
       let _count = data.response[0].deaths.total;
-      ($count_dead >= _count) ? clearInterval(death_intval) : count_dead.update(n => n + 1);
+      ($count_dead >= _count) ? clearInterval(death_intval) : count_dead.update(n => n + evaluateIncrement(_count - $count_dead));
     }, 2);
     let saved_intval = setInterval(function() {
       let _count = data.response[0].cases.recovered;
-      ($count_saved >= _count) ? clearInterval(saved_intval) : count_saved.update(n => n + 1);
+      ($count_saved >= _count) ? clearInterval(saved_intval) : count_saved.update(n => n + evaluateIncrement(_count - $count_saved));
     }, 2);
   });
 </script>
