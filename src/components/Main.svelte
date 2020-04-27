@@ -1,3 +1,14 @@
+<script>
+  import {
+    count_infected,
+    count_saved,
+    count_dead,
+    count_tests,
+  } from "../store/store.js";
+
+  import Counter from './Counter.svelte';
+</script>
+
 <style>
   .main {
     display: flex;
@@ -5,24 +16,34 @@
     align-items: center;
   }
   .main-container {
-    background: red;
+    /* background: red; */
     display: flex;
     width: 100vw;
     justify-content: space-around;
+  }
+
+  .main-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: purple;
   }
 </style>
 
 
 <div class="main">
   <div class="main-container">
-    <div>
-      <h1>Div 1</h1>
+    <div class="main-counter">
+      <Counter casesQty={$count_infected} description='Contagios' />
     </div>
-    <div>
-      <h1>Div 2</h1>
+    <div class="main-counter">
+      <Counter casesQty={$count_dead} description='Fallecidos' />
     </div>
-    <div>
-      <h1>Div 3</h1>
+    <div class="main-counter">
+      <Counter casesQty={$count_saved} description='Recuperados' />
+    </div>
+    <div class="main-counter">
+      <Counter casesQty={$count_saved} description='Tests Realizados' />
     </div>
   </div>
 </div>

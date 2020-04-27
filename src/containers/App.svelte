@@ -3,7 +3,8 @@
   import {
     count_infected,
     count_saved,
-    count_dead
+    count_dead,
+    count_tests,
   } from "../store/store.js";
 
   import Main from '../components/Main.svelte';
@@ -62,6 +63,10 @@
     let saved_intval = setInterval(function() {
       let _count = data.response[0].cases.recovered;
       ($count_saved >= _count) ? clearInterval(saved_intval) : count_saved.update(n => n + evaluateIncrement(_count - $count_saved));
+    }, 2);
+    let tests_intval = setInterval(function() {
+      let _count = data.response[0].cases.recovered;
+      ($count_tests >= _count) ? clearInterval(tests_intval) : count_tests.update(n => n + evaluateIncrement(_count - $count_tests));
     }, 2);
   });
 </script>
