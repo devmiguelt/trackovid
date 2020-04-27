@@ -26,7 +26,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: purple;
+  }
+
+  /* Responsive */
+  @media only screen and (max-width: 768px) {
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      /* justify-content: space-around; */
+    }
   }
 </style>
 
@@ -43,7 +51,7 @@
       <Counter casesQty={$count_saved} description='Recuperados' />
     </div>
     <div class="main-counter">
-      <Counter casesQty={$count_saved} description='Tests Realizados' />
+      <Counter casesQty={$count_tests} description='Tests Realizados' />
     </div>
   </div>
 </div>

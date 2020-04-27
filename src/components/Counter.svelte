@@ -11,9 +11,11 @@
     justify-content: space-between
   }
   .Counter-item-numbers {
+    font-family: 'Lato', sans-serif;
     font-size: 2.2em;
   }
   .Counter-item-label {
+    font-family: 'Inter', sans-serif;
     font-size: 2.0em;
   }
 </style>

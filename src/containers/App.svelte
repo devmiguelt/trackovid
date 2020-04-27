@@ -53,30 +53,34 @@
 
     let infected_intval = setInterval(function() {
       let _count = data.response[0].cases.total;
-
       ($count_infected >= _count) ? clearInterval(infected_intval) : count_infected.update(n => n + evaluateIncrement(_count - $count_infected));
     }, 2);
+
     let death_intval = setInterval(function() {
       let _count = data.response[0].deaths.total;
       ($count_dead >= _count) ? clearInterval(death_intval) : count_dead.update(n => n + evaluateIncrement(_count - $count_dead));
     }, 2);
+
     let saved_intval = setInterval(function() {
       let _count = data.response[0].cases.recovered;
       ($count_saved >= _count) ? clearInterval(saved_intval) : count_saved.update(n => n + evaluateIncrement(_count - $count_saved));
     }, 2);
+
     let tests_intval = setInterval(function() {
-      let _count = data.response[0].cases.recovered;
+      let _count = data.response[0].tests.total;
       ($count_tests >= _count) ? clearInterval(tests_intval) : count_tests.update(n => n + evaluateIncrement(_count - $count_tests));
     }, 2);
   });
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Lato:wght@300;400&display=swap');
   :global(body) {
     background: rgb(15,56,92);
     background: linear-gradient(90deg, rgba(15,56,92,1) 0%, rgba(27,27,31,1) 94%);
     margin: 0;
     padding: 0;
+    color: white;
   }
 </style>
 
