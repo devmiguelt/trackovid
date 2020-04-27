@@ -6,9 +6,6 @@
   } from "../store/store.js";
 
   export const country = 'Chile';
-  // export const count_infected = 0;
-  // export const count_saved = 0;
-  // export const count_dead = 0;
 
   function updateCount(_cant = 0, option) {
     if (option === "infected") {
@@ -58,21 +55,9 @@
     font-size: 1.5em;
   }
 
-  .Counter-title {
-    display: flex;
-    justify-content: center;
-  }
-
-  .Counter-title-h2 {
-    font-size: 1.8em;
-  }
-
 </style>
 
 <div class="Counter">
-  <div class="Counter-title">
-    <h2 class="Counter-title-h2">{country} en Números...</h2>
-  </div>
 
   <div class="Counter-items">
     <div class="Counter-item">

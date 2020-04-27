@@ -68,15 +68,11 @@
 
 <style>
   :global(body) {
-    background: rgb(27,27,31,1);
+    background: rgb(15,56,92);
+    background: linear-gradient(90deg, rgba(15,56,92,1) 0%, rgba(27,27,31,1) 94%);
     margin: 0;
     padding: 0;
   }
 </style>
 
-<Main>
-  <Logo />
-  <Flag />
-  <Counter />
-  <ButtonPlus />
-</Main>
+<Main />

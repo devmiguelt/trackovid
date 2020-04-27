@@ -1,16 +1,28 @@
 <style>
   .main {
     display: flex;
-    justify-content: center;
+    height: 100vh;
+    align-items: center;
   }
   .main-container {
-    padding: 2em 0;
+    background: red;
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
   }
 </style>
 
 
 <div class="main">
   <div class="main-container">
-    <slot />
+    <div>
+      <h1>Div 1</h1>
+    </div>
+    <div>
+      <h1>Div 2</h1>
+    </div>
+    <div>
+      <h1>Div 3</h1>
+    </div>
   </div>
 </div>
