@@ -20,6 +20,7 @@ const services = {
   'statistic_country': fetch(`${API}statistics?country=Chile`, API_HEADERS),
   'countries': fetch(`${API}countries`, API_HEADERS),
   'countries_flag': countries_default,
+  'location_device': fetch('http://ip-api.com/json'),
 }
 
 export default services;

@@ -6,6 +6,7 @@
     count_saved,
     count_dead,
     count_tests,
+    country,
   } from "../store/store.js";
 
   import Main from '../components/Main.svelte';
@@ -25,6 +26,10 @@
 
     const _countries = await services.countries;
     countries = await _countries.json();
+
+    const _device = await services.location_device;
+    let dataDevice = await _device.json();
+    country.update(_value => dataDevice.country);
 
     function evaluateIncrement(value) {
       if (value >= 1000000) {
