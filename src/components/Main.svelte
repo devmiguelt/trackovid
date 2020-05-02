@@ -1,4 +1,5 @@
 <script>
+  import { slide } from 'svelte/transition';
   import {
     count_infected,
     count_saved,
@@ -7,6 +8,8 @@
   } from "../store/store.js";
 
   import Counter from './Counter.svelte';
+
+  let showCountries = false;
 
   function hoverFlag() {
     document.getElementById('changeCountry').classList.remove('main-countryText-hidden')
@@ -17,7 +20,8 @@
     document.getElementById('changeCountry').classList.add('main-countryText-hidden')
   }
   function displayCountries() {
-    alert('Mostrar listado de paises');
+    // alert('Mostrar listado de paises');
+    showCountries = !showCountries;
   }
 </script>
 
@@ -25,7 +29,6 @@
   .main {
     display: flex;
     height: 100vh;
-    /* align-items: center; */
     flex-direction: column;
     justify-content: space-between;
   }
@@ -91,7 +94,10 @@
 
   .main-country-name {
     display: flex;
-    font-size: 1.2em;
+  }
+  .main-country-name h2 {
+    font-size: 2.2em;
+    margin: 0;
   }
 
   .main-container {
@@ -105,6 +111,58 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .countryBox {
+    position: absolute;
+    z-index: 1;
+    width: 15%;
+    height: 45%;
+    top: 0;
+    right: 10em;
+    border-radius: 0 0 20px 20px;
+    background-color: white;
+    padding: 5px 10px;
+    box-shadow: 0px 7px 6px #00000029;
+  }
+
+  .countryBox-countries {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    overflow: auto;
+  }
+
+  .countryBox-countries-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .countryBox-image {
+    width: 47px;
+    height: 47px;
+    background-image: url('../../public/img/chile-rounded.png');
+    background-size: 100%;
+    border-radius: 50%;
+    border: 2px #fff solid;
+    box-shadow: 0px 3px 6px #240d0d50;
+  }
+
+  .countryBox-country {
+    color: #000;
+    margin: 0 0.5em;
+  }
+
+  /* Este debo mejorar como se referencia al input */
+  #search-country {
+    border-color: rgba(0,0,0, 0.5);
+    width: 70%;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-width: 0 0 0.5px 0;
+    outline: none;
   }
 
   /* Responsive */
@@ -153,3 +211,47 @@
     </div>
   </div>
 </div>
+
+{#if showCountries }
+<div class="countryBox" transition:slide>
+  <div class="countryBox-input">
+    <input type="text" name="search-country" id="search-country" placeholder="Ingrese el nombre del país" />
+  </div>
+  <div class="countryBox-countries">
+    <div class="countryBox-countries-item">
+      <div class="countryBox-image"></div>
+      <span class="countryBox-country">Chile</span>
+    </div>
+
+    <div class="countryBox-countries-item">
+      <div class="countryBox-image"></div>
+      <span class="countryBox-country">Chile</span>
+    </div>
+
+    <div class="countryBox-countries-item">
+      <div class="countryBox-image"></div>
+      <span class="countryBox-country">Chile</span>
+    </div>
+
+    <div class="countryBox-countries-item">
+      <div class="countryBox-image"></div>
+      <span class="countryBox-country">Chile</span>
+    </div>
+
+    <div class="countryBox-countries-item">
+      <div class="countryBox-image"></div>
+      <span class="countryBox-country">Chile</span>
+    </div>
+
+    <div class="countryBox-countries-item">
+      <div class="countryBox-image"></div>
+      <span class="countryBox-country">Chile</span>
+    </div>
+
+    <div class="countryBox-countries-item">
+      <div class="countryBox-image"></div>
+      <span class="countryBox-country">Chile</span>
+    </div>
+  </div>
+</div>
+{/if}
