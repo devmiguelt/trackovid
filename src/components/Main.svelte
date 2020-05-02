@@ -6,8 +6,10 @@
     count_dead,
     count_tests,
   } from "../store/store.js";
-
   import Counter from './Counter.svelte';
+
+  export let countriesDescription = [];
+
 
   let showCountries = false;
 
@@ -22,6 +24,7 @@
   function displayCountries() {
     showCountries = !showCountries;
   }
+  let keysCountries = Object.keys(countriesDescription);
 </script>
 
 <style>
@@ -161,7 +164,6 @@
   .countryBox-image {
     width: 47px;
     height: 47px;
-    background-image: url('../../public/img/chile-rounded.png');
     background-size: 100%;
     border-radius: 50%;
     border: 2px #fff solid;
@@ -251,40 +253,12 @@
   </div>
 
   <div class="countryBox-countries">
+    {#each keysCountries as _country}
     <div class="countryBox-countries-item">
-      <div class="countryBox-image"></div>
-      <span class="countryBox-country">Chile</span>
+      <div class="countryBox-image" style="background-image: url('../../public/img/{_country}.svg');"></div>
+      <span class="countryBox-country">{_country}</span>
     </div>
-
-    <div class="countryBox-countries-item">
-      <div class="countryBox-image"></div>
-      <span class="countryBox-country">Chile</span>
-    </div>
-
-    <div class="countryBox-countries-item">
-      <div class="countryBox-image"></div>
-      <span class="countryBox-country">Chile</span>
-    </div>
-
-    <div class="countryBox-countries-item">
-      <div class="countryBox-image"></div>
-      <span class="countryBox-country">Chile</span>
-    </div>
-
-    <div class="countryBox-countries-item">
-      <div class="countryBox-image"></div>
-      <span class="countryBox-country">Chile</span>
-    </div>
-
-    <div class="countryBox-countries-item">
-      <div class="countryBox-image"></div>
-      <span class="countryBox-country">Chile</span>
-    </div>
-
-    <div class="countryBox-countries-item">
-      <div class="countryBox-image"></div>
-      <span class="countryBox-country">Chile</span>
-    </div>
+    {/each}
   </div>
 
   <div class="countryBox-close">

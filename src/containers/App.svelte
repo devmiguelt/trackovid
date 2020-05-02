@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import services from '../../api/functions.js';
   import {
     count_infected,
     count_saved,
@@ -13,19 +14,17 @@
   import Counter from '../components/Counters.svelte';
   import ButtonPlus from '../components/ButtonPlus.svelte';
 
-  let data = {}
-  const API = "https://covid-193.p.rapidapi.com/statistics?country=Chile";
+
+  let data = {};
+  let countries = {};
+  let countriesDescription = services.countries_flag;
 
   onMount(async () => {
-    // Here consult API get Data Free Covid-19
-    const _data = await fetch(API, {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "covid-193.p.rapidapi.com",
-        "x-rapidapi-key": "de91f50bbamshd06b76879e9d251p140c40jsndf14cf3164aa"
-      }
-    });
+    const _data = await services.statistic_country;
     data = await _data.json();
+
+    const _countries = await services.countries;
+    countries = await _countries.json();
 
     function evaluateIncrement(value) {
       if (value >= 1000000) {
@@ -111,4 +110,4 @@
   }
 </style>
 
-<Main />
+<Main countriesDescription={countriesDescription} />
