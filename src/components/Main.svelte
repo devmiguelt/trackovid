@@ -20,7 +20,6 @@
     document.getElementById('changeCountry').classList.add('main-countryText-hidden')
   }
   function displayCountries() {
-    // alert('Mostrar listado de paises');
     showCountries = !showCountries;
   }
 </script>
@@ -122,8 +121,18 @@
     right: 10em;
     border-radius: 0 0 20px 20px;
     background-color: white;
-    padding: 5px 10px;
+    padding: 5px 10px 25px 10px;
     box-shadow: 0px 7px 6px #00000029;
+  }
+
+  .countryBox-title {
+    display: flex;
+    /* border-bottom: 0.2px solid #696969; */
+  }
+
+  .countryBox-title p{
+    margin: 0;
+    color: #969696;
   }
 
   .countryBox-countries {
@@ -137,6 +146,16 @@
     display: flex;
     align-items: center;
     padding: 10px 0;
+
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+  }
+
+  .countryBox-countries-item:hover {
+    background-color: rgba(195, 195, 195, 0.1);
+    cursor: pointer;
   }
 
   .countryBox-image {
@@ -163,6 +182,19 @@
     border-right-width: 0px;
     border-width: 0 0 0.5px 0;
     outline: none;
+  }
+
+  .countryBox-close {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  #countryBox-sortUp {
+    color: gray;
+    font-size:20px;
+    cursor: pointer;
   }
 
   /* Responsive */
@@ -214,9 +246,10 @@
 
 {#if showCountries }
 <div class="countryBox" transition:slide>
-  <div class="countryBox-input">
-    <input type="text" name="search-country" id="search-country" placeholder="Ingrese el nombre del país" />
+  <div class="countryBox-title">
+    <p>Cambiar País</p>
   </div>
+
   <div class="countryBox-countries">
     <div class="countryBox-countries-item">
       <div class="countryBox-image"></div>
@@ -252,6 +285,10 @@
       <div class="countryBox-image"></div>
       <span class="countryBox-country">Chile</span>
     </div>
+  </div>
+
+  <div class="countryBox-close">
+    <i class="fas fa-sort-up" id="countryBox-sortUp" on:click={displayCountries}></i>
   </div>
 </div>
 {/if}
