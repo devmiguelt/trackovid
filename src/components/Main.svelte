@@ -1,10 +1,11 @@
 <script>
-  import { slide } from 'svelte/transition';
+  import { fade, slide } from 'svelte/transition';
   import {
     count_infected,
     count_saved,
     count_dead,
     count_tests,
+    country,
   } from "../store/store.js";
   import Counter from './Counter.svelte';
 
@@ -217,7 +218,7 @@
 
   <div class="main-country">
     <div class="main-country-flags">
-      <div class="main-country-image"></div>
+      <div class="main-country-image" style="background-image: url('../../public/img/flags_main/{$country}.svg');"></div>
       <div class="main-country-image-hover"
         on:mouseover={hoverFlag} 
         on:mouseout={outHoverFlag}
@@ -226,7 +227,11 @@
       </div>
     </div>
     <div class="main-country-name">
-      <h2>Chile</h2>
+      {#if $country}
+      <h2 transition:fade="{{delay: 250, duration: 300}}">{$country}</h2>
+      {:else}
+      <h2>Detectando...</h2>
+      {/if}
     </div>
   </div>
 
