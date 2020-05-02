@@ -99,7 +99,7 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Lato:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap');
   :global(body) {
     background: #F50E28 url('../../public/img/background.png');
     background-repeat: no-repeat;
@@ -107,6 +107,7 @@
     margin: 0;
     padding: 0;
     color: white;
+    font-family: 'Cairo', sans-serif;
   }
 </style>
 
