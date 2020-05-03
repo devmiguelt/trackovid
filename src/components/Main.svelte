@@ -52,59 +52,6 @@
     width: 200px;
     padding: 22px 30px;
   }
-  .main-country {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-  }
-  .main-country-flags {
-    display: flex;
-    justify-content: center;
-  }
-  .main-country-image {
-    margin-top: 1.2em;
-    width: 250px;
-    height: 250px;
-    background-image: url('../../public/img/chile-rounded.png');
-    border-radius: 50%;
-    border: 1em #fff solid;
-  }
-
-  .main-country-image-hover {
-    z-index: 1;
-    position: absolute;
-    margin-top: 1.2em;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    border: 1em #fff solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .main-country-image-hover:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    cursor: pointer;
-  }
-
-  .main-countryText-hidden {
-    display: none;
-  }
-
-  .main-countryText-show {
-    display: block;
-  }
-
-  .main-country-name {
-    display: flex;
-  }
-  .main-country-name h2 {
-    font-size: 2.2em;
-    margin: 0;
-  }
 
   .main-container {
     display: flex;
@@ -220,25 +167,6 @@
   </div>
 
   <Country country={$country} />
-
-  <!-- <div class="main-country">
-    <div class="main-country-flags">
-      <div class="main-country-image" style="background-image: url('../../public/img/flags_main/{$country}.svg');"></div>
-      <div class="main-country-image-hover"
-        on:mouseover={hoverFlag} 
-        on:mouseout={outHoverFlag}
-        on:click={displayCountries}>
-        <p class="main-countryText-hidden" id="changeCountry">Cambiar País</p>
-      </div>
-    </div>
-    <div class="main-country-name">
-      {#if $country}
-      <h2 transition:fade="{{delay: 250, duration: 300}}">{$country}</h2>
-      {:else}
-      <h2>Detectando...</h2>
-      {/if}
-    </div>
-  </div> -->
 
   <div class="main-container">
     <div class="main-counter">
