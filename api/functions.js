@@ -1,5 +1,4 @@
 const API = "https://covid-193.p.rapidapi.com/";
-
 const API_HEADERS = {
   "method": "GET",
   "headers": {
@@ -8,19 +7,25 @@ const API_HEADERS = {
   }
 };
 
-const countries_default = {
-  'Chile': {'flag': 'chile-rounded.png'},
-  'Colombia': {'flag': 'colombia-rounded.png'},
-  'España': {'flag': 'españa-rounded.png'},
-  'Estados Unidos': {'flag': 'eeuu-rounded.png'},
-  'Venezuela': {'flag': 'venezuela-rounded.png'},
-};
+const countries_default = [
+  {'flag': 'chile-rounded.png', 'EN': 'Chile', 'ES': 'Chile'},
+  {'flag': 'colombia-rounded.png', 'EN': 'Colombia', 'ES': 'Colombia'},
+  {'flag': 'españa-rounded.png', 'EN': 'Spain', 'ES': 'España'},
+  {'flag': 'eeuu-rounded.png', 'EN': 'USA', 'ES': 'Estados Unidos'},
+  {'flag': 'venezuela-rounded.png', 'EN': 'Venezuela', 'ES': 'Venezuela'},
+];
 
-const services = {
-  'statistic_country': fetch(`${API}statistics?country=Chile`, API_HEADERS),
-  'countries': fetch(`${API}countries`, API_HEADERS),
-  'countries_flag': countries_default,
-  'location_device': fetch('http://ip-api.com/json'),
+const configuration = {
+  'api': {
+    'urlBase': API,
+    'headers': API_HEADERS,
+  },
+  'countries': countries_default,
+  'services': {
+    'statistic_country': `${API}statistics?country=`,
+    'countries': `${API}countries`,
+    'location_device': fetch('http://ip-api.com/json'),
+  },
 }
 
-export default services;
+export default configuration;
