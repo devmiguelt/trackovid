@@ -1,13 +1,19 @@
 <script>
   import { onMount } from 'svelte';
-  import configuration from '../../api/functions.js';
+  import configuration from '../../api/functions';
+  import {
+    translateCountry,
+    evaluateIncrement,
+    cleanNumber,
+    calcValue,
+  } from '../../api/methods';
   import {
     count_infected,
     count_saved,
     count_dead,
     count_tests,
     country,
-  } from "../store/store.js";
+  } from "../store/store";
 
   import Main from '../components/Main.svelte';
   import Logo from '../components/Logo.svelte';
@@ -20,13 +26,6 @@
   let countries = {};
   let countriesDescription = configuration.countries;
 
-  function translateCountry(value, lang) {
-    let translate = countriesDescription.filter(function(c) {
-      return (lang === 'es') ? c.EN === value : c.ES === value;
-    });
-    return (lang === 'es') ? translate[0].ES : translate[0].EN;;
-  }
-
   onMount(async () => {
     // Get country device
     const locateDevice = await fetch('http://ip-api.com/json');
@@ -37,43 +36,6 @@
       configuration.api.headers
     );
     const data = await _data.json();
-
-    function evaluateIncrement(value) {
-      if (value >= 1000000) {
-        return 100000
-      }
-      if (value >= 100000) {
-        return 10000;
-      }
-      else if (value >= 10000) {
-        return 1000;
-      }
-      else if (value >= 1000) {
-        return 100;
-      }
-      else if (value >= 500) {
-        return 200;
-      }
-      else if (value >= 250) {
-        return 100;
-      }
-      else {
-        return 1;
-      }
-    }
-
-    function formatNumber(value) {
-      let newValue= new Intl.NumberFormat("de-DE").format(value);
-      return newValue
-    }
-
-    function cleanNumber(value) {
-      return parseInt(value.toString().replace(/\./g,''));
-    }
-
-    function calcValue(value, total) {
-      return formatNumber(value + evaluateIncrement(total - value))
-    }
 
     let infected_intval = setInterval(function() {
       let _count = data.response[0].cases.total;
