@@ -8,6 +8,10 @@
     country,
   } from "../store/store.js";
   import Counter from './Counter.svelte';
+  import { selectCountry } from '../../api/methods';
+
+  /* Components */
+  import Country from './Country';
 
   export let countriesDescription = [];
 
@@ -24,10 +28,6 @@
   }
   function displayCountries() {
     showCountries = !showCountries;
-  }
-
-  function clickCountry(name) {
-    country.update(value => name);
   }
 </script>
 
@@ -219,7 +219,9 @@
     <img src="../../public/img/trackovid.png" alt="Logo">
   </div>
 
-  <div class="main-country">
+  <Country country={$country} />
+
+  <!-- <div class="main-country">
     <div class="main-country-flags">
       <div class="main-country-image" style="background-image: url('../../public/img/flags_main/{$country}.svg');"></div>
       <div class="main-country-image-hover"
@@ -236,7 +238,7 @@
       <h2>Detectando...</h2>
       {/if}
     </div>
-  </div>
+  </div> -->
 
   <div class="main-container">
     <div class="main-counter">
@@ -262,7 +264,7 @@
 
   <div class="countryBox-countries">
     {#each countriesDescription as _country}
-    <div class="countryBox-countries-item" on:click={() => clickCountry(_country.ES)}>
+    <div class="countryBox-countries-item" on:click={selectCountry(_country.ES)}>
       <div class="countryBox-image" style="background-image: url('../../public/img/{_country.ES}.svg');"></div>
       <span class="countryBox-country">{_country.ES}</span>
     </div>

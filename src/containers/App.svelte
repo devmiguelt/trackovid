@@ -16,11 +16,6 @@
   } from "../store/store";
 
   import Main from '../components/Main.svelte';
-  import Logo from '../components/Logo.svelte';
-  import Flag from '../components/Flag.svelte';
-  import Counter from '../components/Counters.svelte';
-  import ButtonPlus from '../components/ButtonPlus.svelte';
-
 
   let data = {};
   let countries = {};
