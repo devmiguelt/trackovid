@@ -1,8 +1,7 @@
 <script>
+  import {showCountry} from '../store/store';
   import { fade } from 'svelte/transition';
   export let country;
-
-  let showCountries = false;
 
   function hoverFlag() {
     document.getElementById('changeCountry').classList.remove('countryText-hidden')
@@ -13,7 +12,7 @@
     document.getElementById('changeCountry').classList.add('countryText-hidden')
   }
   function displayCountries() {
-    showCountries = !showCountries;
+    showCountry.update(value => !$showCountry);
   }
 </script>
 
