@@ -25,7 +25,10 @@
   function displayCountries() {
     showCountries = !showCountries;
   }
-  let keysCountries = Object.keys(countriesDescription);
+
+  function clickCountry(name) {
+    country.update(value => name);
+  }
 </script>
 
 <style>
@@ -258,10 +261,10 @@
   </div>
 
   <div class="countryBox-countries">
-    {#each keysCountries as _country}
-    <div class="countryBox-countries-item">
-      <div class="countryBox-image" style="background-image: url('../../public/img/{_country}.svg');"></div>
-      <span class="countryBox-country">{_country}</span>
+    {#each countriesDescription as _country}
+    <div class="countryBox-countries-item" on:click={() => clickCountry(_country.ES)}>
+      <div class="countryBox-image" style="background-image: url('../../public/img/{_country.ES}.svg');"></div>
+      <span class="countryBox-country">{_country.ES}</span>
     </div>
     {/each}
   </div>
