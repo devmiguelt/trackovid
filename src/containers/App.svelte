@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import services from '../../api/functions.js';
+  import configuration from '../../api/functions.js';
   import {
     count_infected,
     count_saved,
@@ -18,18 +18,25 @@
 
   let data = {};
   let countries = {};
-  let countriesDescription = services.countries_flag;
+  let countriesDescription = configuration.countries;
+
+  function translateCountry(value, lang) {
+    let translate = countriesDescription.filter(function(c) {
+      return (lang === 'es') ? c.EN === value : c.ES === value;
+    });
+    return (lang === 'es') ? translate[0].ES : translate[0].EN;;
+  }
 
   onMount(async () => {
-    const _data = await services.statistic_country;
-    data = await _data.json();
+    // Get country device
+    const locateDevice = await fetch('http://ip-api.com/json');
+    const dataDeviceJSON = await locateDevice.json();
+    country.update(_value => translateCountry(dataDeviceJSON.country, 'es'));
 
-    const _countries = await services.countries;
-    countries = await _countries.json();
-
-    const _device = await services.location_device;
-    let dataDevice = await _device.json();
-    country.update(_value => dataDevice.country);
+    const _data = await fetch(`${configuration.services.statistic_country}${translateCountry($country, 'en')}`,
+      configuration.api.headers
+    );
+    const data = await _data.json();
 
     function evaluateIncrement(value) {
       if (value >= 1000000) {
