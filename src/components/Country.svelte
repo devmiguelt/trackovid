@@ -1,7 +1,7 @@
 <script>
-  import {showCountry} from '../store/store';
   import { fade } from 'svelte/transition';
-  export let country;
+  import {showCountry, country} from '../store/store';
+  import configurations from '../../api/functions';
 
   function hoverFlag() {
     document.getElementById('changeCountry').classList.remove('countryText-hidden')
@@ -13,6 +13,16 @@
   }
   function displayCountries() {
     showCountry.update(value => !$showCountry);
+  }
+  function getImg(value) {
+    let _countries = configurations.countries
+    let search = _countries.filter(function(v) {
+      return v.ES === value;
+    });
+    if (search.length > 0) {
+      return search[0].image;
+    }
+    return false;
   }
 </script>
 
@@ -75,7 +85,7 @@
 
 <div class="country">
   <div class="country-flags">
-    <div class="country-image" style="background-image: url('../../public/img/flags_main/{country}.svg');"></div>
+    <div class="country-image" style="background-image: url('{getImg($country)}');"></div>
     <div class="country-image-hover"
       on:mouseover={hoverFlag} 
       on:mouseout={outHoverFlag}
@@ -84,8 +94,8 @@
     </div>
   </div>
   <div class="country-name">
-    {#if country}
-    <h2 transition:fade="{{delay: 250, duration: 300}}">{country}</h2>
+    {#if $country}
+    <h2 transition:fade="{{delay: 250, duration: 300}}">{$country}</h2>
     {:else}
     <h2>Detectando...</h2>
     {/if}

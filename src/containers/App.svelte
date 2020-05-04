@@ -17,6 +17,8 @@
 
   import Main from '../components/Main';
 
+  import imgBackground from '../../public/img/background.png'
+
   let data = {};
   let countries = {};
   let countriesDescription = configuration.countries;
@@ -68,12 +70,13 @@
 
     setNumbers(data);
   });
+
+  document.body.style.background = `#F50E28 url('${imgBackground}')`;
 </script>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap');
   :global(body) {
-    background: #F50E28 url('../../public/img/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;

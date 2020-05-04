@@ -68,7 +68,7 @@
     <img src="{trackovid}" alt="Logo">
   </div>
 
-  <Country country={$country} />
+  <Country/>
 
   <div class="main-container">
     <div class="main-counter">

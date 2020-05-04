@@ -1,3 +1,10 @@
+/* RESOURCE IMAGES */
+import chile from '../public/img/flags_main/chile.svg';
+import colombia from '../public/img/flags_main/colombia.svg';
+import spain from '../public/img/flags_main/españa.svg';
+import usa from '../public/img/flags_main/estados unidos.svg';
+import venezuela from '../public/img/flags_main/venezuela.svg';
+
 const API = "https://covid-193.p.rapidapi.com/";
 const API_HEADERS = {
   "method": "GET",
@@ -8,11 +15,11 @@ const API_HEADERS = {
 };
 
 const countries_default = [
-  {'flag': 'chile-rounded.png', 'EN': 'Chile', 'ES': 'Chile'},
-  {'flag': 'colombia-rounded.png', 'EN': 'Colombia', 'ES': 'Colombia'},
-  {'flag': 'españa-rounded.png', 'EN': 'Spain', 'ES': 'España'},
-  {'flag': 'eeuu-rounded.png', 'EN': 'USA', 'ES': 'Estados Unidos'},
-  {'flag': 'venezuela-rounded.png', 'EN': 'Venezuela', 'ES': 'Venezuela'},
+  {'image': chile, 'EN': 'Chile', 'ES': 'Chile'},
+  {'image': colombia, 'EN': 'Colombia', 'ES': 'Colombia'},
+  {'image': spain, 'EN': 'Spain', 'ES': 'España'},
+  {'image': usa, 'EN': 'USA', 'ES': 'Estados Unidos'},
+  {'image': venezuela, 'EN': 'Venezuela', 'ES': 'Venezuela'},
 ];
 
 const configuration = {

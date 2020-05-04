@@ -17,10 +17,6 @@
 
   export let countriesList = [];
 
-  export function prueba() {
-    console.log('111111');
-  }
-
   export function setNumbers(data) {
     let infected_intval = setInterval(function() {
       let _count = data.response[0].cases.total;
@@ -71,6 +67,17 @@
 
       setNumbers(data);
     }
+  }
+
+  function getImg(value) {
+    let _countries = configuration.countries
+    let search = _countries.filter(function(v) {
+      return v.ES === value;
+    });
+    if (search.length > 0) {
+      return search[0].image;
+    }
+    return false;
   }
 </script>
 
@@ -167,7 +174,7 @@
   <div class="countryBox-countries">
     {#each countriesList as _country}
     <div class="countryBox-countries-item" on:click={selectCountry(_country.ES)}>
-      <div class="countryBox-image" style="background-image: url('../../public/img/{_country.ES}.svg');"></div>
+      <div class="countryBox-image" style="background-image: url('{getImg(_country.ES)}');"></div>
       <span class="countryBox-country">{_country.ES}</span>
     </div>
     {/each}
