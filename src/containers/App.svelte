@@ -57,7 +57,7 @@
 
   onMount(async () => {
     /* Get country device */
-    const locateDevice = await fetch('http://ip-api.com/json');
+    const locateDevice = await fetch('https://extreme-ip-lookup.com/json/');
     const dataDeviceJSON = await locateDevice.json();
     country.update(_value => translateCountry(dataDeviceJSON.country, 'es'));
 
