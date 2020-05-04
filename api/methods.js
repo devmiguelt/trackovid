@@ -1,6 +1,5 @@
 import configuration from "./functions";
 
-
 function translateCountry(value, lang) {
   let translate = configuration.countries.filter(function(c) {
     return (lang === 'es') ? c.EN === value : c.ES === value;

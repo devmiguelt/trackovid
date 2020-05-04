@@ -15,23 +15,13 @@
     country,
   } from "../store/store";
 
-  import Main from '../components/Main.svelte';
+  import Main from '../components/Main';
 
   let data = {};
   let countries = {};
   let countriesDescription = configuration.countries;
 
-  onMount(async () => {
-    // Get country device
-    const locateDevice = await fetch('http://ip-api.com/json');
-    const dataDeviceJSON = await locateDevice.json();
-    country.update(_value => translateCountry(dataDeviceJSON.country, 'es'));
-
-    const _data = await fetch(`${configuration.services.statistic_country}${translateCountry($country, 'en')}`,
-      configuration.api.headers
-    );
-    const data = await _data.json();
-
+  function setNumbers(data) {
     let infected_intval = setInterval(function() {
       let _count = data.response[0].cases.total;
       let parseValue = cleanNumber($count_infected);
@@ -63,6 +53,20 @@
 
       (parseValue >= _count) ? clearInterval(tests_intval) : count_tests.update(n => nuevoValor);
     }, 2);
+  }
+
+  onMount(async () => {
+    /* Get country device */
+    const locateDevice = await fetch('http://ip-api.com/json');
+    const dataDeviceJSON = await locateDevice.json();
+    country.update(_value => translateCountry(dataDeviceJSON.country, 'es'));
+
+    const _data = await fetch(`${configuration.services.statistic_country}${translateCountry($country, 'en')}`,
+      configuration.api.headers
+    );
+    const data = await _data.json();
+
+    setNumbers(data);
   });
 </script>
 

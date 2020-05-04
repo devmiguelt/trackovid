@@ -1,13 +1,76 @@
 <script>
   import { slide } from 'svelte/transition';
-  import { showCountry, country } from '../store/store';
-  import { displayCountries } from './Country';
-  // import { selectCountry } from '../../api/methods';
+  import {
+    showCountry,
+    count_infected,
+    count_saved,
+    count_dead,
+    count_tests,
+    country,
+  } from '../store/store';
+  import configuration from '../../api/functions';
+  import {
+    translateCountry,
+    cleanNumber,
+    calcValue,
+  } from '../../api/methods';
 
   export let countriesList = [];
 
-  function selectCountry(name) {
-    country.update(value => name);
+  export function prueba() {
+    console.log('111111');
+  }
+
+  export function setNumbers(data) {
+    let infected_intval = setInterval(function() {
+      let _count = data.response[0].cases.total;
+      let parseValue = cleanNumber($count_infected);
+      let nuevoValor = calcValue(parseValue, _count);
+
+      (parseValue >= _count) ? clearInterval(infected_intval) : count_infected.update(n => nuevoValor);
+    }, 2);
+
+    let death_intval = setInterval(function() {
+      let _count = data.response[0].deaths.total;
+      let parseValue = cleanNumber($count_dead);
+      let nuevoValor = calcValue(parseValue, _count);
+
+      (parseValue >= _count) ? clearInterval(death_intval) : count_dead.update(n => nuevoValor);
+    }, 2);
+
+    let saved_intval = setInterval(function() {
+      let _count = data.response[0].cases.recovered;
+      let parseValue = cleanNumber($count_saved);
+      let nuevoValor = calcValue(parseValue, _count);
+
+      (parseValue >= _count) ? clearInterval(saved_intval) : count_saved.update(n => nuevoValor);
+    }, 2);
+
+    let tests_intval = setInterval(function() {
+      let _count = data.response[0].tests.total;
+      let parseValue = cleanNumber($count_tests);
+      let nuevoValor = calcValue(parseValue, _count);
+
+      (parseValue >= _count) ? clearInterval(tests_intval) : count_tests.update(n => nuevoValor);
+    }, 2);
+  }
+
+  async function selectCountry(name) {
+    if (name != $country) {
+      showCountry.update(value => !$showCountry);
+      country.update(value => name);
+      let countryEN = translateCountry(name, 'en');
+      count_infected.update(value => 0);
+      count_saved.update(value => 0);
+      count_dead.update(value => 0);
+      count_tests.update(value => 0);
+      const dataFetch = await fetch(`${configuration.services.statistic_country}${countryEN}`,
+        configuration.api.headers
+      )
+      const data = await dataFetch.json();
+
+      setNumbers(data);
+    }
   }
 </script>
 
@@ -27,7 +90,6 @@
 
   .countryBox-title {
     display: flex;
-    /* border-bottom: 0.2px solid #696969; */
   }
 
   .countryBox-title p{
@@ -72,7 +134,6 @@
     margin: 0 0.5em;
   }
 
-  /* Este debo mejorar como se referencia al input */
   #search-country {
     border-color: rgba(0,0,0, 0.5);
     width: 70%;
@@ -113,7 +174,7 @@
   </div>
 
   <div class="countryBox-close">
-    <i class="fas fa-sort-up" id="countryBox-sortUp" on:click={displayCountries}></i>
+    <i class="fas fa-sort-up" id="countryBox-sortUp" on:click={showCountry.update(value => !$showCountry)}></i>
   </div>
 </div>
 {/if}
