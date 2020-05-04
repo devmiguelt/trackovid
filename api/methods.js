@@ -1,11 +1,4 @@
 import configuration from "./functions";
-import {
-  count_infected,
-  count_saved,
-  count_dead,
-  count_tests,
-  country,
-} from "../src/store/store";
 
 
 function translateCountry(value, lang) {
@@ -52,34 +45,9 @@ function calcValue(value, total) {
   return formatNumber(value + evaluateIncrement(total - value))
 }
 
-function selectCountry(name) {
-  let nuevoValor = {country};
-  country.update(value => name);
-
-  // Debo realizar la traduccion para la API
-  let countryEN = translateCountry(name, 'en');
-
-  // Ejecuto el fetch
-  // console.log(`${configuration.services.statistic_country}${countryEN}`)
-  // const _data = fetch(`${configuration.services.statistic_country}${countryEN}`,
-  //     configuration.api.headers
-  //   ).then(function(response) {
-  //     return response.json();
-  //   }).then(function(myJson) {
-  //     console.log(myJson.response[0]);
-  //     return myJson.response[0]
-  //     // console.log($count_infected)
-  //   });
-
-  // Actualizo el País seleccionado
-
-  // Cambio la bandera mostrada
-}
-
 export {
   translateCountry,
   evaluateIncrement,
   cleanNumber,
   calcValue,
-  selectCountry,
 };
