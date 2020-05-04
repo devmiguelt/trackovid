@@ -32,6 +32,16 @@ module.exports = {
           'file-loader',
         ],
       },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,  
+        use: [{
+            loader: 'url-loader',
+            options: { 
+                limit: 8000,
+                name: 'img/[hash].[ext]'
+            } 
+        }]
+      },
     ]
   },
   plugins: [

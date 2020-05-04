@@ -10,6 +10,8 @@
   import Counter from './Counter.svelte';
   import ListCountries from './ListCountries';
 
+  import trackovid from '../../public/img/trackovid.png';
+
   /* Components */
   import Country from './Country';
 
@@ -63,7 +65,7 @@
 
 <div class="main">
   <div class="main-logo">
-    <img src="../../public/img/trackovid.png" alt="Logo">
+    <img src="{trackovid}" alt="Logo">
   </div>
 
   <Country country={$country} />
