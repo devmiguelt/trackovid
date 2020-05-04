@@ -25,7 +25,13 @@ module.exports = {
         use: {
           loader: 'svelte-loader'
         }
-      }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
     ]
   },
   plugins: [
