@@ -38,6 +38,7 @@
   .main-logo img {
     width: 50%;
     padding: 22px 30px;
+    height: 70%;
   }
 
   .main-container {
