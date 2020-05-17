@@ -80,6 +80,13 @@
     font-size: 2.2em;
     margin: 0;
   }
+
+  /* Responsive */
+  @media only screen and (max-width: 768px) {
+    .country {
+      margin: 50px 0;
+    }
+  }
 </style>
 
 
