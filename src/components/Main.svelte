@@ -36,7 +36,7 @@
     box-shadow: 0px 7px 6px #00000029;
   }
   .main-logo img {
-    width: 200px;
+    width: 50%;
     padding: 22px 30px;
   }
 
@@ -58,6 +58,9 @@
     .main-container {
       display: flex;
       flex-direction: column;
+    }
+    .main-logo {
+      width: 50%;
     }
   }
 </style>
