@@ -81,10 +81,23 @@
     margin: 0;
   }
 
-  /* Responsive */
+  /* Responsive 
+   *
+   * Resolution for Ipad, tablet
+   *
+   */
   @media only screen and (max-width: 768px) {
     .country {
       margin: 50px 0;
+    }
+  }
+
+  /*
+   * Resolution for Iphone
+   */
+  @media only screen and (max-width: 375px) {
+    .country {
+      margin: 0 0;
     }
   }
 </style>

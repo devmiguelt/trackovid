@@ -53,13 +53,30 @@
     align-items: center;
   }
 
-  /* Responsive */
-  @media only screen and (max-width: 768px) {
+  /* Resolution for Phone */
+  @media only screen and (max-width: 600px) {
     .main-container {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .main-counter {
+      width: 50%;
     }
     .main-logo {
+      width: 80%;
+    }
+  }
+
+  /* Resolution for Tablets*/
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    .main-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .main-logo {
+      width: 70%;
+    }
+    .main-counter {
       width: 50%;
     }
   }

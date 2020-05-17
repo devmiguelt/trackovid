@@ -19,6 +19,27 @@
     font-family: 'Cairo', sans-serif;
     font-size: 2.0em;
   }
+  /* Responsive */
+
+  /* Resolution for Phone */
+  @media only screen and (max-width: 600px) {
+    .Counter-item-numbers {
+      font-size: 1.2em;
+    }
+    .Counter-item-label {
+      font-size: 1.2em;
+    }
+  }
+
+  /* Resolution for Tablets and up */
+  @media only screen and (min-width: 600px) and (max-width: 768px) {
+    .Counter-item-numbers {
+      font-size: 1.8em;
+    }
+    .Counter-item-label {
+      font-size: 1.8em;
+    }
+  }
 </style>
 
 <div class="Counter">
